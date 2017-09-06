@@ -11,7 +11,9 @@
     <struts2.version>2.5.13</struts2.version>
     <struts2-jquery.version>4.0.2</struts2-jquery.version>
     <commons-io.version>2.5</commons-io.version>
+    <lombok.version>1.16.18</lombok.version>
     <jetty-maven-plugin.version>9.4.0.v20161208</jetty-maven-plugin.version>
+    <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
   </properties>
 
   <build>
@@ -33,6 +35,15 @@
             <stopPort>8999</stopPort>
             <scanIntervalSeconds>10</scanIntervalSeconds>
           </configuration>
+        </plugin>	
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+	  <version>${maven-compiler-plugin.version}</version>
+          <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -44,12 +55,20 @@
       <artifactId>struts2-convention-plugin</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.apache.struts</groupId>
+      <artifactId>struts2-json-plugin</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.jgeppert.struts2.jquery</groupId>
       <artifactId>struts2-jquery-plugin</artifactId>
     </dependency>
     <dependency>
       <groupId>com.jgeppert.struts2.jquery</groupId>
       <artifactId>struts2-jquery-grid-plugin</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
     </dependency>
   </dependencies>
 
@@ -66,6 +85,11 @@
         <version>${struts2.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.apache.struts</groupId>
+        <artifactId>struts2-json-plugin</artifactId>
+        <version>${struts2.version}</version>
+      </dependency>
+      <dependency>
         <groupId>com.jgeppert.struts2.jquery</groupId>
         <artifactId>struts2-jquery-plugin</artifactId>
         <version>${struts2-jquery.version}</version>
@@ -79,6 +103,12 @@
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
         <version>${commons-io.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+        <scope>provided</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>

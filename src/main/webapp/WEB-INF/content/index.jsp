@@ -10,15 +10,19 @@
   <body>
     <h1>Test jqgrid</h1>
     
-    <sjg:grid href="wrongurl" gridModel="blabl" sortableRows="true">
+    <sjg:grid href="/grid-data" gridModel="orders" sortableRows="true">
+      <sjg:gridColumn name="id" title="id" formatter="integer"/>
+      <sjg:gridColumn name="name" title="name"/>
     </sjg:grid>
 
     <script>
       $(document).ajaxComplete(function(event, xhr, settings) {
-        var response = jQuery.parseJSON(xhr.responseText);
-        if (response.errors) {
-          alert("Could not load grid");
-        }
+        try {
+          var response = jQuery.parseJSON(xhr.responseText);
+          if (response.errors) {
+            alert("Could not load grid");
+          }
+	} catch(error){}
       }); 
     </script>
   </body>
